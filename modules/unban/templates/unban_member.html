@@ -1,0 +1,25 @@
+<h1><{$display_name}></h1>
+<p align="justify"><{$display_text}></h1>
+<form enctype="application/x-www-form-urlencoded" method="post" id="unbanning" name="unbanning">
+<table lass="td_profile" id="td_profile">
+    <thead class="head" id="header">
+        <td class="td_ip" id="td_ip">IP</td>
+		<td class="td_email" id="td_email">Email</td>
+		<td class="td_uname" id="td_uname">Username</td>
+        <td class="td_when" id="td_when">When Banned</td>
+    </thead>
+	<{foreach item=banned from=$latestbans}>
+    	<tr class="<{cycle value="odd,even"}>" id="td_item_<{cycle value="odd,even"}>">
+        	<td class="td_check" id="td_check"><input type="checkbox" name="item[<{$banned.id}>]"></td>		
+        	<td class="td_ip" id="td_ip"><{$banned.ip}></td>
+			<td class="td_email" id="td_email"><{$banned.email}></td>
+			<td class="td_uname" id="td_uname"><{$banned.uname}></td>
+            <td class="td_when" id="td_when"><{$banned.when}></td>
+        </tr>
+    <{/foreach}>
+</table>
+<input name="op" type="hidden" value="members" />
+<input name="fct" type="hidden" value="unban" />
+<p><input name="submit" type="submit" value="Submit" /></p>
+</form>
+
